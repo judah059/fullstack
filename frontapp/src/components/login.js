@@ -14,7 +14,7 @@ function Login() {
         let data = {email, password}
         axios.post('http://0.0.0.0:8000/api/token/', data)
             .then(res=>cookies.set('token', res.data.access, {path:'/', maxAge:30*24*60*60}))
-        navigate("/pizdec", { replace: true });
+        navigate("/tables", { replace: true });
     }
     return (
         <div>
