@@ -39,7 +39,7 @@ function Table() {
     }
     const logoutClickHandler = (event) => {
         cookies.remove('token');
-        navigate('/pizdec-login', {replace: true})
+        navigate('/login', {replace: true})
         return false;
     }
 
