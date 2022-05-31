@@ -55,6 +55,7 @@ function Table() {
             axios.get(`http://0.0.0.0:8000/notes/?kw=${keywords}`, auth_header).then(res=>setNotesResults(res.data))
         }
 
+
         if (patient) {
             let converted_patient = Object.entries(patient)
             let patient_id = converted_patient[0][1].id

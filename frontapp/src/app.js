@@ -6,8 +6,8 @@ function App() {
     return (
         <div>
             <Routes>
-                <Route path='/pizdec' element={<Table/>}/>
-                <Route path='/pizdec-login' element={<Login/>}/>
+                <Route path='/tables' element={<Table/>}/>
+                <Route path='/login' element={<Login/>}/>
             </Routes>
 
         </div>
