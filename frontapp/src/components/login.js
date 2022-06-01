@@ -7,6 +7,7 @@ function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const cookies = Cookie()
+    const cookies_resp = cookies.get('token')
     const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
@@ -14,7 +15,8 @@ function Login() {
         let data = {email, password}
         axios.post('http://0.0.0.0:8000/api/token/', data)
             .then(res=>cookies.set('token', res.data.access, {path:'/', maxAge:30*24*60*60}))
-        navigate("/tables", { replace: true });
+        console.log(cookies_resp)
+        navigate("/tables", { replace: true } );
     }
     return (
         <div>

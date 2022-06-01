@@ -25,17 +25,17 @@ function Table() {
     const auth_header = {headers:{Authorization: 'Bearer ' + cookies_resp}}
     const navigate = useNavigate()
     const addClickHandler = (event) => {
-        event.preventDefault()
         let data = {first_name, last_name}
         console.log(data)
-        axios.post('http://127.0.0.1:8000/patients/', data).then(res=>console.log(res.data))
+        axios.post('http://127.0.0.1:8000/patients/', data, auth_header).then(res=>console.log(res.data))
+        event.forceUpdate()
     }
     const noteClickHandler = (event) => {
         event.preventDefault()
         let data = {patient_obj, content}
         data.patient_obj = patient.id
         console.log(data)
-        axios.post('http://127.0.0.1:8000/notes/', data).then(res=>console.log(res.data))
+        axios.post('http://127.0.0.1:8000/notes/', data, auth_header).then(res=>console.log(res.data))
     }
     const logoutClickHandler = (event) => {
         cookies.remove('token');
@@ -75,7 +75,8 @@ function Table() {
     useEffect(()=>{
         axios.get('http://0.0.0.0:8000/patients/', auth_header)
         .then(res=>setPatient(res.data))
-    }, [addClickHandler])
+        
+    }, [])
 
     return (
         <div>
